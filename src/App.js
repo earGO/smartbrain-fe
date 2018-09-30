@@ -39,6 +39,7 @@ class App extends Component {
       isSignedIn: false//a state for a navigation menu control, 'false' by default meaning user is not signed in
     }
   }
+
 //a method for a recognized face location
   calculateFaceLocation =(data) => {
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box; //a bounding box coordinates from a clarifai API response
@@ -108,7 +109,10 @@ class App extends Component {
             : (
               this.state.route==='signin'
               ?<Signin onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
-              :<Registration onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
+              : (this.state.route==='register'
+                ?<Registration onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
+                :<Signin onRouteChange={this.onRouteChange}/>
+                ) //showign signin screen if 'route' is signin (by a default)/
             )
               
         }
