@@ -1,3 +1,11 @@
+some nice pictures to test an app with
+https://cleepr.ru/images/psy-new-face-mv/10.jpg
+https://cdn2.stylecraze.com/wp-content/uploads/2013/06/Barbara-Fialho.jpg
+http://papers.co/wallpaper/papers.co-hp78-cyber-girl-beauty-space-34-iphone6-plus-wallpaper.jpg
+
+and it can not do cartoon faces :(
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
