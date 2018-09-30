@@ -22,7 +22,7 @@ const paticlesOptions = {
 
 
 const app = new Clarifai.App({
-  apiKey: 'bb1e19e2309c44b5ba9df3393686333d'
+  apiKey: '0ae7cd6cb290496a96bafa0c291479b0'
  });
 
 class App extends Component {
@@ -31,7 +31,28 @@ class App extends Component {
     this.state = {
       input: '',
       imageUrl: '',
+      box: {},
     }
+  }
+
+  calculateFaceLocation =(data) => {
+    const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputImage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    console.log(clarifaiFace);
+
+    return {
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - clarifaiFace.bottom_row * height,
+    }
+  }
+
+  displayFaceBox =(boxcoord) => {
+    console.log(boxcoord);
+    this.setState({box: boxcoord});
   }
 
   onInputChange = (event) => {
@@ -41,17 +62,9 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
     app.models.predict(Clarifai.FACE_DETECT_MODEL, 
-    "https://samples.clarifai.com/face-det.jpg")
-    .then(
-    function(response) {
-      // do something with response
-      console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-    },
-    function(err) {
-      // there was an error
-      console.log(err);
-    }
-  );
+    this.state.input)
+    .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))
+    .catch(err => console.log(err));
   }
 
   render() {
@@ -69,7 +82,7 @@ class App extends Component {
           onInputChange={this.onInputChange} 
           onButtonSubmit={this.onButtonSubmit}
         />
-        <Facerecognition imageUrl={this.state.imageUrl}/>
+        <Facerecognition box={this.state.box} imageUrl={this.state.imageUrl}/>
       </div>
     );
   }
