@@ -36,6 +36,7 @@ class App extends Component {
       imageUrl: '', //a state for an image url for a recognition
       box: {}, //a state for a recognized face bounding box
       route: 'signin',//a state for keeping track of where user on a page is
+      isSignedIn: false//a state for a navigation menu control, 'false' by default meaning user is not signed in
     }
   }
 //a method for a recognized face location
@@ -70,6 +71,16 @@ class App extends Component {
     .then(response => this.displayFaceBox(this.calculateFaceLocation(response)))//creates a bounding box to send it as a prop to Facerecognition component
     .catch(err => console.log(err));
   }
+
+  onRouteChange = (route) => {
+    if (route==='signout') {
+      this.setState({isSignedIn:false})
+    } else if (route==='home'){
+      this.setState({isSignedIn: true})
+    }
+    this.setState({'route': route});
+  }
+
 //main render method for a components
   render() {
     return (
@@ -79,18 +90,28 @@ class App extends Component {
 
             />
         
-        <Navigation />
-        <Signin />
-        <Logo />
-        <Rank />
-        <ImageLinkForm 
-          onInputChange={this.onInputChange} //this prop manages the image URL input in a form
-          onButtonSubmit={this.onButtonSubmit}//this prop manages clicking on a Detect-button
-        />
-        <Facerecognition 
-          box={this.state.box} //this prop manages the bounding box for a recognized face on an image
-          imageUrl={this.state.imageUrl}//this prop manages image URL for a rendering purposes - it actualy lods images in a component and shows it on a web-page
-        />
+        <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
+        {/*here we selecting what to show based on a 'route' state*/}
+        { this.state.route ==='home' //show main app screen if a 'route' state is 'home'
+          ? <div>
+              <Logo />
+              <Rank />
+              <ImageLinkForm 
+                onInputChange={this.onInputChange} //this prop manages the image URL input in a form
+                onButtonSubmit={this.onButtonSubmit}//this prop manages clicking on a Detect-button
+              />
+              <Facerecognition 
+                box={this.state.box} //this prop manages the bounding box for a recognized face on an image
+                imageUrl={this.state.imageUrl}//this prop manages image URL for a rendering purposes - it actualy lods images in a component and shows it on a web-page
+              />
+            </div>
+            : (
+              this.state.route==='signin'
+              ?<Signin onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
+              :<Registration onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
+            )
+              
+        }
       </div>
     );
   }
