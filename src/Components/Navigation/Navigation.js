@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Navigation = ({onRouteChange, isSignedIn}) => {
-    if (isSignedIn) {
+    if (isSignedIn) {//display "Sign out" option if user is on main app screen. This means that isSignedIn=true, and 'route' state is 'home'
         return (
             <nav style ={{display: 'flex', justifyContent: 'flex-end'}}>
                 <p 
@@ -10,7 +10,7 @@ const Navigation = ({onRouteChange, isSignedIn}) => {
                     >Sign out</p>
             </nav>
         );
-    } else {
+    } else {//display "Sign in" and "Register" options if user is not Sighed in. This means that isSignedIn=false, and 'route' state is 'signout'
         return (
             <nav style ={{display: 'flex', justifyContent: 'flex-end'}}>
                 <p 

@@ -73,9 +73,9 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    if (route==='signout') {
+    if (route==='signout') {//if user clicks 'Sign out' on Navigation component we change 'isSignedIn' state so "Sign in" and "registration" displayed on a Navigation component
       this.setState({isSignedIn:false})
-    } else if (route==='home'){
+    } else if (route==='home'){//if user is signed in we change 'isSignedIn' state so "Sign out" displayed on a Navigation component
       this.setState({isSignedIn: true})
     }
     this.setState({'route': route});

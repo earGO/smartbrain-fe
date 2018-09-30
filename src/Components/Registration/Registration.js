@@ -21,7 +21,7 @@ const Registration = ({onRouteChange}) => {
                             </div>
                    </div>
                     <div className="">
-                        <input 
+                        <input //here we sen user to main app screen
                                 onClick={() => onRouteChange('home')}
                                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                                 type="submit" value="Sign in" 
