@@ -28,9 +28,17 @@ class Signin extends React.Component {
                 email: this.state.signInEmail,
                 password: this.state.signInPassword
             })
-        });
-        //this is where we change parent 'route' state to 'home' now instead of line 46
-        this.props.onRouteChange('home');
+        })
+            .then(response => response.json() )
+            .then (data => {
+                //here we make the master App 'route' change only
+                //if the user autorization is successful, and we get a 'success' message from a server
+                if (data === 'success'){
+                    //this is where we change parent 'route' state to 'home' now instead of line 46
+                    this.props.onRouteChange('home');
+                }
+            });
+
     }
 
     render() {
