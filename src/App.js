@@ -36,9 +36,27 @@ class App extends Component {
       imageUrl: '', //a state for an image url for a recognition
       box: {}, //a state for a recognized face bounding box
       route: 'signin',//a state for keeping track of where user on a page is
-      isSignedIn: false//a state for a navigation menu control, 'false' by default meaning user is not signed in
+      isSignedIn: false,//a state for a navigation menu control, 'false' by default meaning user is not signed in
+      user: {  //an object for a user to send to a backend and get from backend
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
   }
+//a function to load user data from database
+  loadUser = (userdata) => {
+    this.setState({user: {
+      id: userdata.id,
+      name: userdata.name,
+      email: userdata.email,
+      entries: userdata.entries,
+      joined: userdata.joined
+    }})
+  }
+
 
 //a method for a recognized face location
   calculateFaceLocation =(data) => {
@@ -110,7 +128,7 @@ class App extends Component {
               this.state.route==='signin'
               ?<Signin onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
               : (this.state.route==='register'
-                ?<Registration onRouteChange={this.onRouteChange}/> //showign signin screen if 'route' is signin (by a default)
+                ?<Registration onRouteChange={this.onRouteChange} loadUser={this.loadUser}/> //showign signin screen if 'route' is signin (by a default)
                 :<Signin onRouteChange={this.onRouteChange}/>
                 ) //showign signin screen if 'route' is signin (by a default)/
             )
