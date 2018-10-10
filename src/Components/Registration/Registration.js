@@ -35,7 +35,7 @@ class Registration extends React.Component  {
                     name: this.state.name,
                 })
             })
-                .then(response => response.json() )
+                .then(response => response.json())
                 .then (user => { //we wanna get user response from server
                     //here we make the master App 'route' change only
                     //if the user autorization is successful, and we get a 'success' message from a server
