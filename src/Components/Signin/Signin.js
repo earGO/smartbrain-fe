@@ -8,20 +8,20 @@ class Signin extends React.Component {
         super(props);
         this.state={
             signInEmail: '',
-            signInPassword: '',
+            signInPassword: ''
         }
     }
-    //state change for an user e-mail
+    /*state change for an user e-mail*/
     onEmailChange = (event) => {
         this.setState({signInEmail: event.target.value})
     }
-    //state change for an user password
+    /*state change for an user password*/
     onPasswordChange = (event) => {
         this.setState({signInPassword: event.target.value})
     }
-    //the method for sending user data to server
+
     onSubmitSignin = () => {
-        fetch('http://localhost:3000/signin',{
+        fetch('http://localhost:3000/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -29,16 +29,13 @@ class Signin extends React.Component {
                 password: this.state.signInPassword
             })
         })
-            .then(response => response.json() )
-            .then (data => {
-                //here we make the master App 'route' change only
-                //if the user autorization is successful, and we get a 'success' message from a server
-                if (data === 'success'){
-                    //this is where we change parent 'route' state to 'home' now instead of line 46
+            .then(response => response.json())
+            .then(user => {
+                if (user.id) {
+                    this.props.loadUser(user)
                     this.props.onRouteChange('home');
                 }
-            });
-
+            })
     }
 
     render() {
@@ -71,8 +68,8 @@ class Signin extends React.Component {
                                 </div>
                        </div>
                         <div className="">
-                            <input //here we used to change 'route' state to display main app screen.
-                                    //but now we will call an onSubmitSignin method of a component and change 'route' state there                                
+                            <input /*here we used to change 'route' state to display main app screen.
+                                    //but now we will call an onSubmitSignin method of a component and change 'route' state there*/
                                     onClick={this.onSubmitSignin}
                                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                                     type="submit" value="Sign in" 
@@ -80,7 +77,7 @@ class Signin extends React.Component {
                                     />
                         </div>
                         <div className="lh-copy mt3 pointer f3">
-                            <p //here we send User to a registration screen
+                            <p /*here we send User to a registration screen*/
                                 onClick = {() => onRouteChange('register')}
                                 href="#0" className="f6 link dim black db"
                                 >Register</p>
