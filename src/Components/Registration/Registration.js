@@ -40,7 +40,7 @@ class Registration extends React.Component  {
                     //here we make the master App 'route' change only
                     //if the user autorization is successful, and we get a 'success' message from a server
                     if (user){
-                        if (user.name & user.email & user.password) {
+                        if (user.name) {
                             this.props.loadUser(user);
                             //this is where we change parent 'route' state to 'home' now instead of line 46
                             this.props.onRouteChange('home');
