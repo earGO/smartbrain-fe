@@ -26,7 +26,7 @@ class Registration extends React.Component  {
         }
     //the method for sending user data to server
         onRegister = () => {
-            fetch('http://localhost:3000/register',{
+            fetch('https://sleepy-beach-37692.herokuapp.com/register',{
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
