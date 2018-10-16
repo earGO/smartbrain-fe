@@ -151,3 +151,5 @@ class App extends Component {
 }
 
 export default App;
+
+/*app state as pushed on heroku*/
