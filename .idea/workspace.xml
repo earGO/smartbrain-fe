@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="978db493-e40f-4f7c-ab2a-51f89e2a1c0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Components/Registration/Registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Registration/Registration.js" afterDir="false" />
-    </list>
+    <list default="true" id="978db493-e40f-4f7c-ab2a-51f89e2a1c0d" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -253,7 +251,7 @@
       <workItem from="1539095823183" duration="2306000" />
       <workItem from="1539173611077" duration="8100000" />
       <workItem from="1539472792575" duration="50000" />
-      <workItem from="1539712106789" duration="5010000" />
+      <workItem from="1539712106789" duration="5360000" />
     </task>
     <task id="LOCAL-00001" summary="fixed minor issues, some code replaced, comments partialy removed">
       <created>1539186437026</created>
@@ -266,7 +264,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15466000" />
+    <option name="totallyTimeSpent" value="15816000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="31" width="1837" height="1000" extended-state="0" />
@@ -286,7 +284,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" side_tool="true" visible="true" weight="0.32990867" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" side_tool="true" visible="true" weight="0.32990867" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
